@@ -8,7 +8,7 @@ import java.awt.Graphics;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Opdracht extends Actor
+public class Task extends Actor
 {
     /**
      * Act - do whatever the Opdracht wants to do. This method is called whenever
@@ -16,18 +16,18 @@ public class Opdracht extends Actor
      */
     private String tekst="";
     
-    public Opdracht()
+    public Task()
     {
         setImage(new GreenfootImage(150, 50));
         updateImage();     
     }
     
-    public String geefNaam()
+    public String getName()
     {
         return tekst;
     }
     
-    public void toon(String tekst)
+    public void show(String tekst)
     {
         this.tekst=tekst;
     }
@@ -37,7 +37,7 @@ public class Opdracht extends Actor
         updateImage();
     }  
     
-    public void resetInvoer()
+    public void resetInput()
     {
         GreenfootImage image = getImage();
        
@@ -50,7 +50,7 @@ public class Opdracht extends Actor
     }
     private void updateImage()
     {
-        resetInvoer();
+        resetInput();
         GreenfootImage image = getImage();
         image.setColor(Color.BLACK);
         image.drawString(tekst, 3, 40);

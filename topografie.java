@@ -7,57 +7,57 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class topografie extends World
+public class Topografie extends World
 {
-    private Vliegtuig myPlane;
+    private Plane myPlane;
     
-    private Opdracht myOpdracht;
-    private ScoreBord myScore;
+    private Task myTask;
+    private ScoreBoard myScore;
     
     /**
      * Constructor for objects of class topografie.
      * 
      */
-    public topografie()
+    public Topografie()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(440, 565, 1); 
         this.setBackground("nederland.jpg");
        
      
-        this.addObject(new Stad("Amsterdam"),250,250);
-        this.addObject(new Stad("Den Haag"),130,300);
-        this.addObject(new Stad("Leeuwarden"),300,100);
+        this.addObject(new City("Amsterdam"),250,250);
+        this.addObject(new City("Den Haag"),130,300);
+        this.addObject(new City("Leeuwarden"),300,100);
         
-        myOpdracht=new Opdracht();
-        this.addObject(myOpdracht,100,40);
+        myTask=new Task();
+        this.addObject(myTask,100,40);
         
-        myScore=new ScoreBord();
+        myScore=new ScoreBoard();
         this.addObject(myScore,50,100);
         
-        myPlane=new Vliegtuig(myOpdracht,myScore);
+        myPlane=new Plane(myTask,myScore);
         this.addObject(myPlane,100,200);
         
-        maakOpdracht();
+        makeTask();
     }
     
-    public boolean maakOpdracht()
+    public boolean makeTask()
     {
-        List steden = getObjects(Stad.class);
+        List cities = getObjects(City.class);
         
-        int aantalSteden = steden.size();
-        if(aantalSteden ==0)
+        int count = cities.size();
+        if(count ==0)
         {
-              myOpdracht.toon("Klaar");
+              myTask.show("Klaar");
               return false;
         }
         
         else
         {    
-            int teKiezen = Greenfoot.getRandomNumber(aantalSteden);
-            Stad deStad = (Stad)steden.get(teKiezen);
-            String stadNaam = deStad.geefNaam();
-            myOpdracht.toon(stadNaam);
+            int randomCity = Greenfoot.getRandomNumber(count);
+            City city = (City)cities.get(randomCity);
+            String name = city.getName();
+            myTask.show(name);
             return true;
        }
         

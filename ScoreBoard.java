@@ -10,19 +10,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Graphics;
 
 
-public class ScoreBord extends Actor
+public class ScoreBoard extends Actor
 {
     private GreenfootImage image;
     private int score;
-    public ScoreBord()
+    public ScoreBoard()
     {
          this.image= new GreenfootImage(50, 50);
-         this.veegScorebordSchoon();
+         this.clean();
          setImage(this.image);
          this.score=0;
     }
     
-    public void veegScorebordSchoon()
+    public void clean()
     {
         image.setColor(Color.PINK);
         image.setFont(new Font("Arial",false,false, 25));
@@ -31,19 +31,19 @@ public class ScoreBord extends Actor
         image.drawRect(0,0,49,49);    
     }
     
-    public int geefScore()
+    public int getScore()
     {
         return this.score;
     }
     
-    public void verhoogScore()
+    public void incScore()
     {
         this.score++;
     }
     
     public void act() 
     {
-        this.veegScorebordSchoon();
+        this.clean();
         GreenfootImage image = getImage();
         image.setColor(Color.BLACK);
         image.drawString(Integer.toString(score), 3, 40);
